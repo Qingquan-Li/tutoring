@@ -45,5 +45,4 @@ auth_user_groups            django_session
 References:
 - https://koenwoortman.com/python-django-email-as-username/
 - https://docs.djangoproject.com/en/dev/topics/auth/customizing/#a-full-example
-- https://tech.serhatteker.com/post/2020-01/email-as-username-django/
-- https://ilovedjango.com/django/admin/login-with-email-instead-of-user-name-in-django-admin/
+- https://testdriven.io/blog/django-custom-user-model/

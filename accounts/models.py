@@ -80,14 +80,14 @@ class Profile(CommonInfo):
     user = models.OneToOneField(to=CustomUser,
                                 on_delete=models.CASCADE,
                                 to_field='id')
-    avatar_url = models.URLField(max_length=200, blank=True, null=True)
+    avatar_url = models.URLField(max_length=200, blank=False, null=True)
     institution = models.ForeignKey(to=Institution,
-                                    on_delete=models.CASCADE,
-                                    blank=True,
+                                    on_delete=models.SET_NULL,
+                                    blank=False,
                                     null=True)
     department = models.ForeignKey(to=Department,
-                                   on_delete=models.CASCADE,
-                                   blank=True,
+                                   on_delete=models.SET_NULL,
+                                   blank=False,
                                    null=True)
 
     def __str__(self):
