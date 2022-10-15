@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+
+{% comment %}
+    Reference:
+    https://docs.djangoproject.com/en/4.1/ref/contrib/admin/#admin-theming
+
+    The list of CSS variables are defined at
+    `django/contrib/admin/static/admin/css/base.css`
+{% endcomment %}
+
+{% block extrastyle %}{{ block.super }}
+<style>
+:root {
+  --primary: #9774d5;
+  --secondary: #785cab;
+  --link-fg: #7c449b;
+  --link-selected-fg: #8f5bb2;
+
+  /* custom color */
+  --dark-violet: #9400d3;
+  --violet-between-primary-secondary: #8a60d3;
+
+  --link-hover-color: var(--dark-violet);
+  --button-hover-bg: var(--violet-between-primary-secondary);
+  --default-button-hover-bg: var(--dark-violet);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+      /* --selected-row: #00363a; */
+      --selected-row: #ffc;
+    }
+  }
+</style>
+{% endblock %}

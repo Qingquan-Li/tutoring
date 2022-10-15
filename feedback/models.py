@@ -20,3 +20,8 @@ class Feedback(CommonInfo):
     subject = models.CharField(max_length=200)
     message = models.TextField()
     email = models.EmailField()
+
+    def __str__(self):
+        # If you don’t set list_display, the admin site will display a single
+        # column that displays the __str__() representation of each object.
+        return self.subject

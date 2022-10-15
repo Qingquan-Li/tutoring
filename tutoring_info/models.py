@@ -40,6 +40,11 @@ class Meeting(CommonInfo):
     additional_notes = models.TextField(
         verbose_name='Additional notes (optional)', blank=True, null=True)
 
+    def __str__(self):
+        # If you don’t set list_display, the admin site will display a single
+        # column that displays the __str__() representation of each object.
+        return self.subject
+
 
 class Registration(CommonInfo):
     meeting = models.ForeignKey(to=Meeting,
@@ -51,3 +56,8 @@ class Registration(CommonInfo):
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
     cunyfirst_id = models.CharField(max_length=20, blank=True, null=True)
+
+    def __str__(self):
+        # If you don’t set list_display, the admin site will display a single
+        # column that displays the __str__() representation of each object.
+        return self.first_name
