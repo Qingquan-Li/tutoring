@@ -29,8 +29,12 @@ class MyUserAdmin(UserAdmin):
         }),
     )
 
-    # docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_fieldsets
     def get_fieldsets(self, request, obj=None):
+        """
+        docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_fieldsets
+        After executing this function will automatically display all fields of fieldsets
+        instead of add_fieldsets on the add user page.
+        """
         if not request.user.is_superuser:
             fieldsets = (
                 (None, {
@@ -58,30 +62,37 @@ class MyUserAdmin(UserAdmin):
             return fieldsets
         return self.fieldsets
 
-    readonly_fields = ('last_login', 'date_joined',)  # add
+    readonly_fields = (
+        'last_login',
+        'date_joined',
+    )
 
-    # docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_readonly_fields
     def get_readonly_fields(self, request, obj=None):
+        """
+        docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_readonly_fields
+        """
         if not request.user.is_superuser:
             return self.readonly_fields + ('is_active', )
         return self.readonly_fields
 
     # The add_fieldsets variable is used to define the fields
     # that will be displayed on the create user page.
-    add_fieldsets = (
-        (
-            None,
-            {
-                "classes": ("wide", ),
-                # "fields": ("username", "password1", "password2"),
-                "fields": ("email", "password1", "password2"),
-            },
-        ), )
+    # add_fieldsets = (
+    #     (
+    #         None,
+    #         {
+    #             "classes": ("wide", ),
+    #             # "fields": ("username", "password1", "password2"),
+    #             "fields": ("email", "password1", "password2"),
+    #         },
+    #     ),
+    # )
 
     # list_display = ("username", "email", "first_name", "last_name", "is_staff")
-    list_display = ("email", "first_name", "last_name", "is_staff")
+    list_display = ("email", "first_name", "last_name", "last_login",
+                    "date_joined", "is_staff")
     # search_fields = ("username", "first_name", "last_name", "email")
     search_fields = ("first_name", "last_name", "email")
 
     # ordering = ("username",)
-    ordering = ("email", )
+    ordering = ("date_joined", )
