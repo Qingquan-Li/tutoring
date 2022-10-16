@@ -90,7 +90,7 @@ class MyUserAdmin(UserAdmin):
 
     # list_display = ("username", "email", "first_name", "last_name", "is_staff")
     list_display = ("email", "first_name", "last_name", "last_login",
-                    "date_joined", "is_staff")
+                    "is_staff")
     # search_fields = ("username", "first_name", "last_name", "email")
     search_fields = ("first_name", "last_name", "email")
 
