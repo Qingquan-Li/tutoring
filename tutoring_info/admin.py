@@ -21,15 +21,30 @@ class MeetingAdmin(admin.ModelAdmin):
         "version",
     )
 
-    list_display = ("subject", "way_of_meeting", "get_publisher_first_name_last_name")
-    
-    search_fields = ("subject",)
+    list_display = ("subject", "meeting_time", "way_of_meeting",
+                    "get_publisher_first_name_last_name")
 
-    
+    search_fields = ("subject", )
+
     def get_publisher_first_name_last_name(self, obj):
         return obj.publisher.first_name + ' ' + obj.publisher.last_name
-    get_publisher_first_name_last_name.short_description = 'Name'
+
+    get_publisher_first_name_last_name.short_description = 'Publisher'
     get_publisher_first_name_last_name.admin_order_field = 'publisher__first_name'
+
+    def get_queryset(self, request):
+        """
+        The get_queryset method on a ModelAdmin returns a QuerySet
+        of all model instances that can be edited by the admin site.
+        One use case for overriding this method is to show objects
+        owned by the logged-in user.
+        Reference:
+        docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_queryset
+        """
+        qs = super().get_queryset(request)
+        if request.user.is_superuser or request.user.groups.filter(name='administrator').exists():
+            return qs
+        return qs.filter(publisher=request.user)
 
 
 admin.site.register(Meeting, MeetingAdmin)
@@ -41,23 +56,31 @@ class RegistrationAdmin(admin.ModelAdmin):
     readonly_fields = (
         "created_time",
         "modified_time",
-        # "version",
-        "get_meeting_subject",
     )
 
-    list_display = ("get_full_name", "get_meeting_subject", "created_time")
-    
+    list_display = ("get_full_name", "email", "meeting", "created_time")
+
     # search_fields = ("subject",)
 
     def get_full_name(self, obj):
         return obj.first_name + ' ' + obj.last_name
+
     get_full_name.short_description = 'Name'
     get_full_name.admin_order_field = 'first_name'
 
-    def get_meeting_subject(self, obj):
-        return obj.meeting.subject
-    get_meeting_subject.short_description = 'Meeting subject'
-    get_meeting_subject.admin_order_field = 'meeting__subject'
+    def get_queryset(self, request):
+        """
+        The get_queryset method on a ModelAdmin returns a QuerySet
+        of all model instances that can be edited by the admin site.
+        One use case for overriding this method is to show objects
+        owned by the logged-in user.
+        Reference:
+        docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.ModelAdmin.get_queryset
+        """
+        qs = super().get_queryset(request)
+        if request.user.is_superuser or request.user.groups.filter(name='administrator').exists():
+            return qs
+        return qs.filter(meeting__publisher=request.user)
 
 
 admin.site.register(Registration, RegistrationAdmin)
