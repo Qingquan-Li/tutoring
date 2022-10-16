@@ -90,7 +90,15 @@ class MyUserAdmin(UserAdmin):
 
     # list_display = ("username", "email", "first_name", "last_name", "is_staff")
     list_display = ("email", "first_name", "last_name", "last_login",
-                    "is_staff")
+                    "get_group", "is_staff")
+    
+    def get_group(self, user):
+        groups = []
+        for group in user.groups.all():
+            groups.append(group.name)
+        return ', '.join(groups)
+    get_group.short_description = 'Group (Role)'
+
     # search_fields = ("username", "first_name", "last_name", "email")
     search_fields = ("first_name", "last_name", "email")
 
