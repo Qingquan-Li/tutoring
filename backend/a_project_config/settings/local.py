@@ -25,8 +25,6 @@ $ python manage.py shell --settings=a_project_config.settings.local
 """
 
 
-import os
-
 from .production import *  # noqa
 
 # DEBUG = False  # Unable to load static files automatically
