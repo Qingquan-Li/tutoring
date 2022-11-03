@@ -1,14 +1,12 @@
-# .DS_Store is used on macOS to store the display attributes of the current folder: such as the placement position of the file icon or the background color.
-# This file is not visible on macOS, but it will be submitted when git push.
 .DS_Store
 .vscode/
 # pycharm:
 .idea/
 
-# For Django:
+# For backend (Python/Django):
 # References: github.com/github/gitignore/blob/master/Python.gitignore
-.env
-.venv/
+backend/.env
+backend/.venv/
 __pycache__/
 *.py[cod]
-db.sqlite3
+backend/db.sqlite3
