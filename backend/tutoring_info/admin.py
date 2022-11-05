@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 
 from .models import Meeting, Registration
 
@@ -22,15 +23,23 @@ class MeetingAdmin(admin.ModelAdmin):
     )
 
     list_display = ("subject", "meeting_time", "way_of_meeting",
-                    "get_publisher_first_name_last_name")
+                    "get_publisher_first_name_last_name",
+                    "num_of_registrations")
 
     search_fields = ("subject", )
 
     def get_publisher_first_name_last_name(self, obj):
         return obj.publisher.first_name + ' ' + obj.publisher.last_name
-
     get_publisher_first_name_last_name.short_description = 'Publisher'
     get_publisher_first_name_last_name.admin_order_field = 'publisher__first_name'
+
+    def num_of_registrations(self, obj):
+        """
+        Calculate the number of registrations with `annotate()` and `Count()`
+        https://stackoverflow.com/questions/32443471/
+        """
+        return obj.num_of_registrations
+    num_of_registrations.admin_order_field = "num_of_registrations"
 
     def get_queryset(self, request):
         """
@@ -43,8 +52,10 @@ class MeetingAdmin(admin.ModelAdmin):
         """
         qs = super().get_queryset(request)
         if request.user.is_superuser or request.user.groups.filter(name='administrator').exists():
-            return qs
-        return qs.filter(publisher=request.user)
+            # return qs
+            return qs.annotate(num_of_registrations=Count("registration"))
+        # return qs.filter(publisher=request.user)
+        return qs.filter(publisher=request.user).annotate(num_of_registrations=Count("registration"))
 
 
 admin.site.register(Meeting, MeetingAdmin)
@@ -81,6 +92,15 @@ class RegistrationAdmin(admin.ModelAdmin):
         if request.user.is_superuser or request.user.groups.filter(name='administrator').exists():
             return qs
         return qs.filter(meeting__publisher=request.user)
+
+    search_fields = ("first_name", "last_name", "email")
+
+    list_filter = (
+        # "meeting",  # list all meetings for a tutor
+        # You can limit the choices of a related model to the objects
+        # involved in that relation using RelatedOnlyFieldListFilter.
+        ("meeting", admin.RelatedOnlyFieldListFilter),
+    )
 
 
 admin.site.register(Registration, RegistrationAdmin)
