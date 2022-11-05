@@ -1,9 +1,9 @@
 # To-do
 
-- [ ] Testing
-- [ ] favicon.ico
+- [x] Testing
+- [x] favicon.ico
 https://www.helpyourmath.com/images/img/logo1.jpg
-- [ ] On tutor end's, show registrations number
-instead of publisher's name.
-- [ ] On RegistrationAdmin, add filter on the right side.
+- [x] On RegistrationAdmin, add filter on the right side.
+- [x] On tutor end's, show number of registrations.
 - [ ] Deploy on cloud sever.
+- [ ] VIEW ON SITE on admin page.

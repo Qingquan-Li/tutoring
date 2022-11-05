@@ -24,9 +24,7 @@ class CustomUserWithProfileModelTests(TestCase):
             email='bob@email.com',
             password='testpass123')
         Institution.objects.create(name='BMCC-CUNY')
-        Institution.objects.create(name='CCNY-CUNY')
         Department.objects.create(name='Math')
-        Department.objects.create(name='Computer Science')
         Profile.objects.create(
             user=User.objects.get(email='alice@email.com'),
             avatar_url='https://placekitten.com/g/200/200',
@@ -36,8 +34,6 @@ class CustomUserWithProfileModelTests(TestCase):
         Profile.objects.create(
             user=User.objects.get(email='bob@email.com'),
             avatar_url='https://placekitten.com/g/300/300',
-            institution=Institution.objects.get(name='CCNY-CUNY'),
-            department=Department.objects.get(name='Computer Science'),
         )
 
     def test_create_user(self):
@@ -46,14 +42,12 @@ class CustomUserWithProfileModelTests(TestCase):
         self.assertTrue(user.is_active)
         self.assertFalse(user.is_staff)
         self.assertFalse(user.is_superuser)
-        # profile = Profile.objects.get(pk=1)
-        profile = Profile.objects.get(
-            avatar_url='https://placekitten.com/g/200/200')
-        self.assertEqual(profile.user.email, 'alice@email.com')
-        self.assertEqual(profile.avatar_url,
+        # profile:
+        self.assertEqual(user.profile.user.email, 'alice@email.com')
+        self.assertEqual(user.profile.avatar_url,
                          'https://placekitten.com/g/200/200')
-        self.assertEqual(profile.institution.name, 'BMCC-CUNY')
-        self.assertEqual(profile.department.name, 'Math')
+        self.assertEqual(user.profile.institution.name, 'BMCC-CUNY')
+        self.assertEqual(user.profile.department.name, 'Math')
 
     def test_create_superuser(self):
         admin_user = get_user_model().objects.get(email='bob@email.com')
@@ -61,14 +55,10 @@ class CustomUserWithProfileModelTests(TestCase):
         self.assertTrue(admin_user.is_active)
         self.assertTrue(admin_user.is_staff)
         self.assertTrue(admin_user.is_superuser)
-        profile = Profile.objects.get(pk=2)
-        # profile = Profile.objects.get(
-        #     avatar_url='https://placekitten.com/g/300/300')
-        self.assertEqual(profile.user.email, 'bob@email.com')
-        self.assertEqual(profile.avatar_url,
+        # profile:
+        self.assertEqual(admin_user.profile.user.email, 'bob@email.com')
+        self.assertEqual(admin_user.profile.avatar_url,
                          'https://placekitten.com/g/300/300')
-        self.assertEqual(profile.institution.name, 'CCNY-CUNY')
-        self.assertEqual(profile.department.name, 'Computer Science')
 
 
 """
@@ -78,7 +68,7 @@ Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
 ..
 ----------------------------------------------------------------------
-Ran 2 tests in 0.139s
+Ran 2 tests in 0.133s
 
 OK
 Destroying test database for alias 'default'...
