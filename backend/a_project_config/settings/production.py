@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party
+    'rest_framework',
+
     # Local
     'accounts.apps.AccountsConfig',
     'tutoring_info.apps.TutoringInfoConfig',
@@ -151,3 +154,20 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# DRF default settings are in:
+# .venv/lib/python3.8/site-packages/rest_framework/settings.py
+# Setting the global throttling policy:
+# https://www.django-rest-framework.org/api-guide/throttling/
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        # anonymous users. The IP address of the request will be used as the unique cache key.
+        'anon': '600/minute',
+        # given user. The user id will be used as a unique cache key if the user is authenticated.
+        'user': '600/minute',
+    },
+}
