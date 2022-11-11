@@ -1,4 +1,6 @@
-# Back-end To-do
+# Tutoring backend
+
+## To-do
 
 - [x] Testing
 - [x] favicon.ico
