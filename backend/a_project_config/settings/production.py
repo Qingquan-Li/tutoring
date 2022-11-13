@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     # Local
     'accounts.apps.AccountsConfig',
     'tutoring_info.apps.TutoringInfoConfig',
-    'feedback.apps.FeedbackConfig',
+    'contact_us.apps.ContactUsConfig',
 ]
 
 MIDDLEWARE = [

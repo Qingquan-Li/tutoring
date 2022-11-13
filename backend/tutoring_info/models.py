@@ -25,7 +25,8 @@ class Meeting(CommonInfo):
                                   null=True,
                                   editable=False)
     subject = models.CharField(max_length=200)
-    summary = models.TextField()
+    summary = models.TextField(
+      verbose_name='Detail (introduce more about this meeting)')
     # The value stored to the database is the value in `ONLINE = ""`
     ONLINE = 'online'
     INPERSON = 'in-person'

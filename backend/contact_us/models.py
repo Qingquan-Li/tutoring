@@ -16,12 +16,12 @@ class CommonInfo(models.Model):
         super().save(*args, **kwargs)  # Call the "real" save() method.
 
 
-class Feedback(CommonInfo):
-    subject = models.CharField(max_length=200)
-    message = models.TextField()
+class Message(CommonInfo):
+    name = models.CharField(max_length=100)
     email = models.EmailField()
+    content = models.TextField()
 
     def __str__(self):
         # If you don’t set list_display, the admin site will display a single
         # column that displays the __str__() representation of each object.
-        return self.subject
+        return self.content
