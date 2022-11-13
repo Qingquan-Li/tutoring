@@ -12,3 +12,5 @@ https://www.helpyourmath.com/images/img/logo1.jpg
 - [x] API
 - [ ] API testing
 - [ ] Add website_alert, display info on the top of the website
+- [ ] Change feedback to contact_us
+- [ ] Add field `introduction`, "Introduce yourself (optional)"
