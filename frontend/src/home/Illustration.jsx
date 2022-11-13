@@ -9,7 +9,7 @@ export default function Illustration() {
   return (
     <div className='row justify-content-center mt-5'>
       {/* https://getbootstrap.com/docs/5.2/layout/breakpoints/ */}
-      <div className=" col-8 col-md-6 col-lg-4">
+      <div className="col-8 col-md-6 col-lg-4  mt-4">
         <img
           src={tutoring}
           // style={{ transform: "scale(0.5)" }}

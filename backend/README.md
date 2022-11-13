@@ -13,4 +13,5 @@ https://www.helpyourmath.com/images/img/logo1.jpg
 - [ ] API testing
 - [ ] Add website_alert, display info on the top of the website
 - [ ] Change feedback to contact_us
-- [ ] Add field `introduction`, "Introduce yourself (optional)"
+- [ ] Add `verbose_name='Detail (tell more about this meeting)'` to `summary` field
+- [ ] Add field `introduction` field, `verbose_name='Introduce yourself (optional)'` to profile
