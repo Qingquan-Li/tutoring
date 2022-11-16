@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     # 3rd party
     'rest_framework',
+    'corsheaders',
 
     # Local
     'accounts.apps.AccountsConfig',
@@ -61,6 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # new
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -171,3 +173,10 @@ REST_FRAMEWORK = {
         'user': '600/minute',
     },
 }
+
+# https://github.com/adamchainz/django-cors-headers
+CORS_ALLOWED_ORIGINS = [
+    # 3000 is the default port for React
+    'http://localhost:3000',
+    'http://192.168.0.118:3000'
+]

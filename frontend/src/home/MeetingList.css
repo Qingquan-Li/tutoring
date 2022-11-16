@@ -1,0 +1,21 @@
+.card-body .avatar {
+  height: 34px;
+  width: 34px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: aliceblue;
+}
+.card-body .tutor-name {
+  color: #444;
+  font-weight: 500;
+}
+.card-body .way-of-meeting {
+  color: #444;
+  font-size: small;
+  font-weight: 500;
+}
+.card-body .meeting-time {
+  color: #444;
+  font-size: small;
+  font-weight: 500;
+}

@@ -18,7 +18,7 @@
 ## Run in the development mode
 
 ```bash
-$ npm start
+$ cd frontend && npm start
 ```
 
 ## Build for production
