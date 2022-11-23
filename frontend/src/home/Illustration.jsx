@@ -7,9 +7,9 @@ import tutoring from '../assets/tutoring.svg';
 
 export default function Illustration() {
   return (
-    <div className='row justify-content-center mt-5'>
+    <div className='row justify-content-center'>
       {/* https://getbootstrap.com/docs/5.2/layout/breakpoints/ */}
-      <div className="col-8 col-md-6 col-lg-4  mt-4">
+      <div className="col-8 col-md-6 col-lg-4">
         <img
           src={tutoring}
           // style={{ transform: "scale(0.5)" }}

@@ -1,12 +1,10 @@
-import NavBar from "../common/NavBar"
 import Illustration from "./Illustration";
 import MeetingList from "./MeetingList";
 import "./index.css";
 
 export default function Home() {
   return (
-    <div className="container">
-        <NavBar />
+    <div className="container home-container">
         <Illustration />
         <MeetingList />
     </div>

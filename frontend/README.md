@@ -14,6 +14,8 @@
 - [ ] Check my registration through email address
 - [ ] Search tutoring session (via `subject` field)
 - [ ] Filter sessions by `date`, `way` fiedds
+- [ ] Can not register if `!is_active || meeting_time < (current_time + 2hours)`
+- [ ] Display tutors' email?
 
 ## Run in the development mode
 

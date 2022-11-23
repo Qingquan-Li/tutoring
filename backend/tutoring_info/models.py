@@ -55,7 +55,7 @@ class Registration(CommonInfo):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
-    cunyfirst_id = models.CharField(verbose_name='CUNYFirst ID (optional)',
+    cunyfirst_id = models.CharField(verbose_name='CUNYfirst ID (optional)',
                                     max_length=20,
                                     blank=True,
                                     null=True)

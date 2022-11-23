@@ -5,7 +5,7 @@ from tutoring_info.models import Registration
 
 
 class MeetingListSerializer(serializers.ModelSerializer):
-    meeting_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M:%S")
+    meeting_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M")
 
     class Meta:
         model = Meeting
@@ -49,9 +49,9 @@ class MeetingListSerializer(serializers.ModelSerializer):
 
 
 class MeetingDetailSerializer(serializers.ModelSerializer):
-    meeting_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M:%S")
-    created_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M:%S")
-    modified_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M:%S")
+    meeting_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M")
+    created_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M")
+    modified_time = serializers.DateTimeField(format="%m/%d/%Y %H:%M")
 
     class Meta:
         model = Meeting

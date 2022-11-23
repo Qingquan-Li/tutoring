@@ -20,6 +20,7 @@ export default function NavBar() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav ms-auto">
               <a className="nav-link" href="/contact/">Contact Us</a>
+              {/* TODO */}
               <a className="nav-link" href="/admin/">Admin</a>
             </div>
           </div>
