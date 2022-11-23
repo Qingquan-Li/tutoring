@@ -1,0 +1,19 @@
+.meeting-list-card .card-body .avatar {
+  height: 34px;
+  width: 34px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: aliceblue;
+}
+.meeting-list-card .card-body .tutor-name {
+  color: #444;
+  font-weight: 500;
+}
+.meeting-list-card .card-body .way-of-meeting {
+  font-size: smaller;
+  font-weight: 500;
+}
+.meeting-list-card .card-body .meeting-time {
+  font-size: smaller;
+  font-weight: 500;
+}

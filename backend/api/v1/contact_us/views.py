@@ -2,14 +2,14 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 
-from feedback.models import Feedback
-from .serializers import FeedbackListSerializer
+from contact_us.models import Message
+from .serializers import MessageListSerializer
 
 
-class FeedbackList(generics.CreateAPIView):
-    """ Create: Feedback """
-    queryset = Feedback.objects.all()
-    serializer_class = FeedbackListSerializer
+class MessageList(generics.CreateAPIView):
+    """ Create: Message """
+    queryset = Message.objects.all()
+    serializer_class = MessageListSerializer
 
     def create(self, request, *args, **kwargs):
         """Override the create function by changing the Response structure."""
@@ -21,7 +21,7 @@ class FeedbackList(generics.CreateAPIView):
         return Response(
             {
                 'status': 'ok',
-                'message': 'Feedback created',
+                'message': 'Message created',
                 'data': serializer.data,
             },
             status=status.HTTP_201_CREATED,

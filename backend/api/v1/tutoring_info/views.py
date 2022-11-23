@@ -14,13 +14,15 @@ from .utils.pagination import CustomMeetingPagination
 
 class MeetingList(generics.ListAPIView):
     """ List: Meeting """
-    # queryset = Meeting.objects.all()
+    queryset = Meeting.objects.all()
     # Without `order_by` would warn:
+    # TODO: After setting pagination -> queryset -> set order_by('id')
     # UnorderedObjectListWarning: Pagination may yield inconsistent results with
     # an unordered object_list: <class 'tutoring_info.models.Meeting'> QuerySet.
-    queryset = Meeting.objects.all().order_by('id')
+    # queryset = Meeting.objects.all().order_by('id')
     serializer_class = MeetingListSerializer
-    pagination_class = CustomMeetingPagination
+    # TODO: pagination
+    # pagination_class = CustomMeetingPagination
     # https://www.django-rest-framework.org/api-guide/filtering/#orderingfilter
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['meeting_time']

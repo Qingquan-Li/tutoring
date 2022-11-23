@@ -80,7 +80,10 @@ class Profile(CommonInfo):
     user = models.OneToOneField(to=CustomUser,
                                 on_delete=models.CASCADE,
                                 to_field='id')
-    avatar_url = models.URLField(max_length=200, blank=False, null=True)
+    avatar_url = models.URLField(verbose_name='Avatar URL (optional)',
+                                 max_length=200,
+                                 blank=False,
+                                 null=True)
     institution = models.ForeignKey(to=Institution,
                                     on_delete=models.SET_NULL,
                                     blank=False,
@@ -89,6 +92,8 @@ class Profile(CommonInfo):
                                    on_delete=models.SET_NULL,
                                    blank=False,
                                    null=True)
+    introduction = models.TextField(
+        verbose_name='Introduce (about me) (optional)', blank=True, null=True)
 
     def __str__(self):
         return ''

@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from feedback.models import Feedback
+from contact_us.models import Message
 
 
-class FeedbackListSerializer(serializers.ModelSerializer):
+class MessageListSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Feedback
+        model = Message
         fields = "__all__"
         read_only_fields = ('is_active',)

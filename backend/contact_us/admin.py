@@ -1,28 +1,28 @@
 from django.contrib import admin
 
-from .models import Feedback
+from .models import Message
 
 
-class FeedbackAdmin(admin.ModelAdmin):
+class MessageAdmin(admin.ModelAdmin):
     # fields = (
     #     "is_active",
-    #     "subject",
-    #     "message",
+    #     "name",
     #     "email",
+    #     "content",
     #     "created_time",
     #     "modified_time",
     #     # 'version",
     # )
-    model = Feedback
+    model = Message
     readonly_fields = (
         "created_time",
         "modified_time",
         # "version",
     )
 
-    list_display = ("subject", "email", "created_time")
+    list_display = ("content", "name", "email", "created_time")
     
-    search_fields = ("subject",)
+    search_fields = ("content",)
 
 
-admin.site.register(Feedback, FeedbackAdmin)
+admin.site.register(Message, MessageAdmin)
