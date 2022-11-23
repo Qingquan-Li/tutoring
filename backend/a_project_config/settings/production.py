@@ -36,7 +36,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['learnenglish.qingquanli.com', 'localhost', ]
+ALLOWED_HOSTS = ['tutoring.helpyourmath.com', 'localhost', ]
 
 
 # Application definition
@@ -176,7 +176,7 @@ REST_FRAMEWORK = {
 
 # https://github.com/adamchainz/django-cors-headers
 CORS_ALLOWED_ORIGINS = [
-    # 3000 is the default port for React
     'http://localhost:3000',
-    'http://192.168.0.118:3000'
+    'http://192.168.0.118:3000',
+    'https://tutoring.helpyourmath.com',
 ]
