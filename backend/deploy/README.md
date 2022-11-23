@@ -1,5 +1,9 @@
 # Before deploying new code to Server
 
+```bash
+$ cd ~/tutoring/backend && source .venv/bin/activate
+```
+
 ## 1. Deployment checklist
 > References:
 > https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
