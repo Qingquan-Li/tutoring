@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import RegistrationForm from "./RegistrationForm";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./index.css";
+import { RootAPIURL } from "../common/RootAPIURL";
 
-const baseURL = 'http://192.168.0.118:8000/api/v1/';
-// production:
-// const baseURL = 'https://tutoring.helpyourmath/api/v1/';
+const baseURL = RootAPIURL;
 
 export default function MeetingDetail() {
   const params = useParams();

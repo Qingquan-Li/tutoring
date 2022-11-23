@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { RootAPIURL } from "../common/RootAPIURL";
 
-const URL = 'http://192.168.0.118:8000/api/v1/registrations/';
-// production:
-// const URL = 'https://tutoring.helpyourmath/api/v1/registrations/';
+const RegistrationAPIURL = RootAPIURL + 'registrations/';
 
 export default function RegistrationForm() {
   const params = useParams();
@@ -20,7 +19,7 @@ export default function RegistrationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post(URL, {
+    axios.post(RegistrationAPIURL, {
       meeting: params.meetingId,
       first_name: firstName,
       last_name: lastName,
