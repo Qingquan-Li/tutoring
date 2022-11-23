@@ -5,7 +5,7 @@ export default function ErrorPage() {
   console.error(error);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '30px', }}>
+    <div style={{ textAlign: 'center', marginTop: '100px', }}>
       {error.statusText === 'Not Found' ? (
         <>
           <h1>404 Not Found</h1>
