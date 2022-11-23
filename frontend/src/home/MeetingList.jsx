@@ -6,11 +6,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MeetingList.css'
+import { RootAPIURL } from '../common/RootAPIURL';
 
 const client = axios.create({
-  baseURL: 'http://192.168.0.118:8000/api/v1/'
-  // production:
-  // baseURL: 'https://tutoring.helpyourmath/api/v1/'
+  baseURL: RootAPIURL,
 });
 
 export default function MeetingList() {
