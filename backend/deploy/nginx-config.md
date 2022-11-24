@@ -19,16 +19,29 @@ Finally, we’ll create a location / {} block to match all other requests. Insid
 ```
 server {
     listen 80;
-    server_name server_domain_or_IP;
+    server_name tutoring.helpyourmath.com;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         root /home/jake/tutoring/backend;
     }
 
+    #location / {
+    #    include proxy_params;
+    #    proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
+    #}
+
     location / {
-        include proxy_params;
-        proxy_pass http://unix:/run/gunicorn.sock;
+        root /home/jake/tutoring/frontend/biuild;
+        proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
+    }
+
+    location /api/v1 {
+        proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
+    }
+
+    location /admin {
+        proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
     }
 }
 ```

@@ -179,4 +179,5 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://192.168.0.118:3000',
     'https://tutoring.helpyourmath.com',
+    'https://tutoring.pages.dev',
 ]

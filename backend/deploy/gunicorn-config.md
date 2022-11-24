@@ -1,5 +1,6 @@
 > References:
 > https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
+> https://www.digitalocean.com/community/questions/how-to-deploy-multiple-django-apps-as-subdomains-using-nginx-and-gunicorn
 
 
 # 1. Create and open a systemd socket file for Gunicorn
@@ -85,15 +86,7 @@ Check the status of the process to find out whether it was able to start:
 ```bash
 $ sudo systemctl status gunicorn-for-tutoring.socket
 ● gunicorn-for-tutoring.socket - gunicorn socket
-     Loaded: loaded (/etc/systemd/system/gunicorn-for-tutoring.socket; enabled; vendor preset: enabled)
-     Active: active (listening) since Thu 2022-11-24 02:09:58 UTC; 44s ago
-   Triggers: ● gunicorn-for-tutoring.service
-     Listen: /run/gunicorn-for-tutoring.sock (Stream)
-      Tasks: 0 (limit: 1136)
-     Memory: 0B
-     CGroup: /system.slice/gunicorn-for-tutoring.socket
-
-Nov 24 02:09:58 ubuntu systemd[1]: Listening on gunicorn socket.
+     ...
 ```
 
 Next, check for the existence of the gunicorn-for-tutoring.sock file within the /run directory:
