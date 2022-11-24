@@ -68,11 +68,23 @@ Create pull request and merge code if needed.
 > References:
 > https://saurabh-kumar.com/python-dotenv/
 
+Before this step:
+- git clone the code from GitHub on the server:
+- Put the local public key `~/.ssh/id_rsa.pub`
+to the server `~/.ssh/authorized_keys` first.
+
 ```bash
 $ cd project_directory/backend # Local
 $ sftp username@server_ip
 $ cd project_directory/backend # Server
 $ put .env # Transferring Local Files to the Remote System
+```
+
+Or:
+
+```bash
+$ cd project_directory/backend # Local
+$ scp .env username@server_ip:~/tutoring/backend
 ```
 
 <br>
@@ -85,7 +97,13 @@ $ put .env # Transferring Local Files to the Remote System
 
 ## 1. Entering the project path and activating the virtual environment
 ```bash
-$ cd ~/tutoring && source .venv/bin/activate
+$ cd ~/tutoring/backend && source .venv/bin/activate
+```
+
+If there is no virtual environment,
+create a virtual environment first:
+```bash
+$ python3 -m venv .venv
 ```
 
 ## 2. Pulling new code from GitHub
