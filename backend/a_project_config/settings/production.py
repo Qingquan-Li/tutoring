@@ -181,11 +181,3 @@ CORS_ALLOWED_ORIGINS = [
     'https://tutoring.helpyourmath.com',
     'https://tutoring.pages.dev',
 ]
-
-CSRF_TRUSTED_ORIGINS = [
-  'https://tutoring.helpyourmath.com',
-  'http://tutoring.helpyourmath.com',
-  'https://*.helpyourmath.com',
-  'http://*.helpyourmath.com',
-  'https://*.127.0.0.1',
-]

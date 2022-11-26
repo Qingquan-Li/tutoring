@@ -81,7 +81,7 @@ Some `443/SSL` statements will be appended to the Nginx configuration file ( `/e
 
 ```
 server {
-    listen 80;
+    listen 80; # This line would be deleted by Certbot. managed by Certbot
     server_name tutoring.helpyourmath.com;
     ...
 
