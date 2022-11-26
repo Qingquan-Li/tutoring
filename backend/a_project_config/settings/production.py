@@ -188,5 +188,4 @@ CSRF_TRUSTED_ORIGINS = [
   'https://*.helpyourmath.com',
   'http://*.helpyourmath.com',
   'https://*.127.0.0.1',
-  'localhost',
 ]
