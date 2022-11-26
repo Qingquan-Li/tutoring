@@ -184,4 +184,9 @@ CORS_ALLOWED_ORIGINS = [
 
 CSRF_TRUSTED_ORIGINS = [
   'https://tutoring.helpyourmath.com',
+  'http://tutoring.helpyourmath.com',
+  'https://*.helpyourmath.com',
+  'http://*.helpyourmath.com',
+  'https://*.127.0.0.1',
+  'localhost',
 ]
