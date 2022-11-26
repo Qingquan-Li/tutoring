@@ -36,7 +36,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['tutoring.helpyourmath.com', 'localhost', ]
+ALLOWED_HOSTS = ['admin.tutoring.helpyourmath.com', 'localhost', ]
 
 
 # Application definition
