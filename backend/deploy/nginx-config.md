@@ -26,23 +26,11 @@ server {
         root /home/jake/tutoring/backend;
     }
 
-    #location / {
-    #    include proxy_params;
-    #    proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
-    #}
-
     location / {
-        root /home/jake/tutoring/frontend/biuild;
+        include proxy_params;
         proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
     }
 
-    location /api/v1 {
-        proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
-    }
-
-    location /admin {
-        proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
-    }
 }
 ```
 
