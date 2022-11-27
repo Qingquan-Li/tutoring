@@ -36,7 +36,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['admin.tutoring.helpyourmath.com', 'localhost', ]
+ALLOWED_HOSTS = [
+    'admin.tutoring.helpyourmath.com',
+    'localhost',
+    'tutoring-admin.helpyourmath.com',
+    '161.35.8.36',
+]
 
 
 # Application definition
@@ -183,11 +188,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-  'https://admin.tutoring.helpyourmath.com',
-  'http://admin.tutoring.helpyourmath.com',
-  'https://tutoring.helpyourmath.com',
-  'http://tutoring.helpyourmath.com',
   'https://*.helpyourmath.com',
   'http://*.helpyourmath.com',
   'https://*.127.0.0.1',
+  'https://tutoring.pages.dev',
 ]
