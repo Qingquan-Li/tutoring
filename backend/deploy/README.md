@@ -146,6 +146,6 @@ you should run the command:
 > To read more, please check deploy/gunicorn-config.md and deploy/nginx-config.md
 
 ```bash
-$ sudo systemctl restart gunicorn
+$ sudo systemctl restart gunicorn-for-tutoring
 $ sudo systemctl restart nginx
 ```

@@ -19,9 +19,12 @@
     https://docs.djangoproject.com/en/4.1/intro/tutorial03/#write-views-that-actually-do-something
 {% endcomment %}
 
-{% load static %}
+{% comment %}
+    {% load static %}
+{% endcomment %}
+{% load django_static %}
 {% block extrahead %}
-    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="icon" href="{% django_static 'favicon.ico' %}">
 {% endblock %}
 
 {% block title %}{{ title }} | Tutoring {% endblock %}

@@ -51,6 +51,11 @@ If no errors are reported, go ahead and restart Nginx by typing:
 $ sudo systemctl restart nginx
 ```
 
+Check errors in Nginx:
+```bash
+$ sudo vim /var/log/nginx/error.log
+```
+
 If we have enabled ufw (uncomplicated firewall), we need to open up our firewall to normal traffic on port 80:
 > References:
 > https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands

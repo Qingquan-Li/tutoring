@@ -100,6 +100,11 @@ If something goes wrong, Check the Gunicorn socket’s logs by typing:
 $ sudo journalctl -u gunicorn-for-tutoring.socket
 ```
 
+Check gunicorn--for-tutoring process:
+```bash
+$ ps ax|grep gunicorn--for-tutoring
+```
+
 # 4. Testing Socket Activation
 
 Currently, if you’ve only started the gunicorn-for-tutoring.socket unit, the gunicorn-for-tutoring.service will not be active yet since the socket has not yet received any connections. You can check this by typing:
@@ -111,7 +116,6 @@ $ sudo systemctl status gunicorn-for-tutoring
 TriggeredBy: ● gunicorn-for-tutoring.socket
 ```
 
-#TODO:
 To test the socket activation mechanism, we can send a connection to the socket through curl by typing:
 ```bash
 $ curl --unix-socket /run/gunicorn-for-tutoring.sock localhost

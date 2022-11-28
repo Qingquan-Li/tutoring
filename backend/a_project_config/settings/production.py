@@ -37,10 +37,8 @@ DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = [
-    'admin.tutoring.helpyourmath.com',
+    'tutoring.helpyourmath.com',
     'localhost',
-    'tutoring-admin.helpyourmath.com',
-    '161.35.8.36',
 ]
 
 
@@ -145,7 +143,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
+STATIC_URL = 'django_static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -160,7 +159,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "django_static")
 
 # DRF default settings are in:
 # .venv/lib/python3.8/site-packages/rest_framework/settings.py
@@ -185,11 +185,4 @@ CORS_ALLOWED_ORIGINS = [
     'http://192.168.0.118:3000',
     'https://tutoring.helpyourmath.com',
     'https://tutoring.pages.dev',
-]
-
-CSRF_TRUSTED_ORIGINS = [
-  'https://*.helpyourmath.com',
-  'http://*.helpyourmath.com',
-  'https://*.127.0.0.1',
-  'https://tutoring.pages.dev',
 ]
