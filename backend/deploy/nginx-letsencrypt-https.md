@@ -128,40 +128,6 @@ Nov 23 00:03:54 ubuntu systemd[1]: Started Run certbot twice daily.
 To test the renewal process, you can do a dry run with certbot:
 ```bash
 $ sudo certbot renew --dry-run
-Saving debug log to /var/log/letsencrypt/letsencrypt.log
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Processing /etc/letsencrypt/renewal/en.fatlitalk.com.conf
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Cert not due for renewal, but simulating renewal for dry run
-Plugins selected: Authenticator nginx, Installer nginx
-Renewing an existing certificate
-Performing the following challenges:
-http-01 challenge for en.fatlitalk.com
-Waiting for verification...
-Cleaning up challenges
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-new certificate deployed with reload of nginx server; fullchain is
-/etc/letsencrypt/live/en.fatlitalk.com/fullchain.pem
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-** DRY RUN: simulating 'certbot renew' close to cert expiry
-**          (The test certificates below have not been saved.)
-
-Congratulations, all renewals succeeded. The following certs have been renewed:
-  /etc/letsencrypt/live/en.fatlitalk.com/fullchain.pem (success)
-** DRY RUN: simulating 'certbot renew' close to cert expiry
-**          (The test certificates above have not been saved.)
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-IMPORTANT NOTES:
- - Your account credentials have been saved in your Certbot
-   configuration directory at /etc/letsencrypt. You should make a
-   secure backup of this folder now. This configuration directory will
-   also contain certificates and private keys obtained by Certbot so
-   making regular backups of this folder is ideal.
 ```
 
 If you see no errors, you’re all set. When necessary, Certbot will renew your certificates and reload Nginx to pick up the changes. If the automated renewal process ever fails, Let’s Encrypt will send a message to the email you specified, warning you when your certificate is about to expire.
