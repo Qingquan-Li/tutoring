@@ -22,9 +22,9 @@
 {% comment %}
     {% load static %}
 {% endcomment %}
-{% load django_static %}
 {% block extrahead %}
-    <link rel="icon" href="{% django_static 'favicon.ico' %}">
+    {% comment %}<link rel="icon" href="{% static 'favicon.ico' %}">{% endcomment %}
+    <link rel="icon" href="/django_static/favicon.ico">
 {% endblock %}
 
 {% block title %}{{ title }} | Tutoring {% endblock %}
