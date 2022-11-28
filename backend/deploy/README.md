@@ -64,7 +64,39 @@ $ git push
 
 Create pull request and merge code if needed.
 
-## 7. Transferring environment variables (`.env`) to server
+<br>
+
+---
+
+<br>
+
+# Deploying new code to Server
+
+## 1. Entering the project path and activating the virtual environment
+```bash
+$ cd ~/tutoring/backend && source .venv/bin/activate
+```
+
+If there is no virtual environment,
+create a virtual environment first:
+```bash
+$ cd ~/tutoring/backend
+$ python3 -m venv .venv
+```
+
+## 2. Pulling new code from GitHub
+> References:
+> https://github.com/git-guides/git-pull
+
+```bash
+$ git pull # or: git fetch + git merge
+```
+
+```bash
+$ git clone git@github.com:Qingquan-Li/tutoring.git
+```
+
+## 3. Transferring environment variables (`.env`) to server
 > References:
 > https://saurabh-kumar.com/python-dotenv/
 
@@ -87,34 +119,7 @@ $ cd project_directory/backend # Local
 $ scp .env username@server_ip:~/tutoring/backend
 ```
 
-<br>
-
----
-
-<br>
-
-# Deploying new code to Server
-
-## 1. Entering the project path and activating the virtual environment
-```bash
-$ cd ~/tutoring/backend && source .venv/bin/activate
-```
-
-If there is no virtual environment,
-create a virtual environment first:
-```bash
-$ python3 -m venv .venv
-```
-
-## 2. Pulling new code from GitHub
-> References:
-> https://github.com/git-guides/git-pull
-
-```bash
-$ git pull # or: git fetch + git merge
-```
-
-## 3. Installing package dependencies
+## 4. Installing package dependencies
 
 If you hava added/upgraded new package dependencies,
 you should run the command to intall them:
@@ -123,7 +128,7 @@ you should run the command to intall them:
 (.venv) $ pip install -r requirements.txt
 ```
 
-## 4. Applying migrations to database:
+## 5. Applying migrations to database:
 
 If you have changed the models' fields or added/deleted models,
 you should run the command:
@@ -132,7 +137,7 @@ you should run the command:
 (.venv) $ python manage.py migrate --settings=a_project_config.settings.production
 ```
 
-## 5. Running the test code
+## 6. Running the test code
 ```bash
 (.venv) $ python manage.py test --settings=a_project_config.settings.production
 # If 'permission denied  to create database', run:
@@ -141,7 +146,7 @@ you should run the command:
 # postgres=# ALTER USER your-postgres-user-name WITH SUPERUSER;
 ```
 
-## 6. Restart Gunicorn and Nginx
+## 7. Restart Gunicorn and Nginx
 
 > To read more, please check deploy/gunicorn-config.md and deploy/nginx-config.md
 
