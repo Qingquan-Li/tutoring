@@ -15,7 +15,9 @@
 - [ ] Search tutoring session (via `subject` field)
 - [ ] Filter sessions by `date`, `way` fiedds
 - [ ] Can not register if `!is_active || meeting_time < (current_time + 2hours)`
-- [ ] Display tutors' email?
+- [ ] Display tutors' email
+- [ ] favicon.ico
+- [ ] Home page sort by meeting time
 
 ## Run in the development mode
 

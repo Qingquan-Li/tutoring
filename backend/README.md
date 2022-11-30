@@ -17,6 +17,15 @@ https://www.helpyourmath.com/images/img/logo1.jpg
 - [x] Add field `introduction` field, `verbose_name='Introduce yourself (optional)'` to profile
 - [x] Cancel pagination for meetings api
 - [ ] Change SQLite to PostgreSQL
+- [ ] Auto renew letsencrypt
+- [ ] BMCC CUNYfirst_ID, null=False
+- [ ] Zoom link on Admin
+- [ ] Registration number limit, waitlist
+- [ ] User can change password, profile
+- [ ] Add is_expire function as a field
+- [ ] Add duration field
+- [ ] Admin time HH:MM instead of HH:MM:ss
+- [ ] Display AM/PM
 
 ## Run locally
 

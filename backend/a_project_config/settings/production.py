@@ -183,6 +183,17 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://192.168.0.118:3000',
-    'https://tutoring.helpyourmath.com',
+    #'https://tutoring.helpyourmath.com',
+    #'http://tutoring.helpyourmath.com',
     'https://tutoring.pages.dev',
+]
+
+# https://docs.djangoproject.com/en/4.1/ref/settings/#secure-proxy-ssl-header
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# https://docs.djangoproject.com/en/4.1/ref/csrf/
+# docs.djangoproject.com/en/4.1/ref/settings/#std-setting-CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = [
+   'https://tutoring.helpyourmath.com',
+   'http://tutoring.helpyourmath.com',
 ]
