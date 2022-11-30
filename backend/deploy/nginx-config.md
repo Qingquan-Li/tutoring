@@ -1,5 +1,7 @@
 > References:
 > https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04
+> https://stackoverflow.com/questions/65124421/deploy-both-django-and-react-on-cloud-using-nginx
+> https://mattsegal.dev/nginx-django-reverse-proxy-config.html
 
 
 # Configure Nginx to Proxy Pass to Gunicorn
@@ -30,6 +32,74 @@ server {
         include proxy_params;
         proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
     }
+
+}
+
+Handle React.js (frontend) and Django (backend) with letsencrypt:
+
+```
+server {
+    #listen 80;
+    server_name tutoring.helpyourmath.com;
+
+    location / {
+        root /home/jake/tutoring/frontend/build;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    location /django_static/ {
+        autoindex on;
+        alias /home/jake/tutoring/backend/django_static/;
+    }
+
+    location /admin {
+        try_files $uri @proxy_api;
+    }
+
+    location /api/v1 {
+        try_files $uri @proxy_api;
+    }
+
+    location @proxy_api {
+        proxy_pass http://unix:/run/gunicorn-for-tutoring.sock;
+        # By default, NGINX sends a HTTP request to WSGI server with host header of 127.0.0.1
+        # Ensure original Host header is forwarded to our Django app (from Nginx to Gunicorn)
+        # $http_host vs $host: github.com/frappe/frappe_docker/pull/184
+        proxy_set_header Host $host;
+        # Tell Gunicorn the original IP address of the client.
+        # NGINX will always "lie" to you and say that the client IP address is 127.0.0.1.
+        # Optional, if you don't want to know the client IP address.
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        # $scheme: request scheme, “http” or “https.”
+        # Django sometimes needs to know whether the incoming request is secure (HTTPS) or not (HTTP).
+        # For example, some features of the SecurityMiddleware class checks for HTTPS.
+        # NGINX is always telling Django that the client's request to the sever is not secure, even when it is.
+        # Fix it: put the client request protocol into a header called X-Forwarded-Proto.
+        # Then set up the SECURE_PROXY_SSL_HEADER setting to read this header in Django settings.py file:
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/tutoring.helpyourmath.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/tutoring.helpyourmath.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+
+server {
+    if ($host = tutoring.helpyourmath.com) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name tutoring.helpyourmath.com;
+    return 404; # managed by Certbot
+
 
 }
 ```
