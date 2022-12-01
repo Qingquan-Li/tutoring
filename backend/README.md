@@ -26,6 +26,7 @@ https://www.helpyourmath.com/images/img/logo1.jpg
 - [ ] Add duration field
 - [ ] Admin time HH:MM instead of HH:MM:ss
 - [ ] Display AM/PM
+- [ ] Remove email case sensitive
 
 ## Run locally
 

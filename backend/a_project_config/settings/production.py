@@ -193,7 +193,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # https://docs.djangoproject.com/en/4.1/ref/csrf/
 # docs.djangoproject.com/en/4.1/ref/settings/#std-setting-CSRF_TRUSTED_ORIGINS
-CSRF_TRUSTED_ORIGINS = [
-   'https://tutoring.helpyourmath.com',
-   'http://tutoring.helpyourmath.com',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#    'https://tutoring.helpyourmath.com',
+#    'http://tutoring.helpyourmath.com',
+# ]

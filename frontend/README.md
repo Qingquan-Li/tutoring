@@ -30,3 +30,9 @@ $ cd frontend && npm start
 ```bash
 $ npm run build
 ```
+
+## SCP build folder to the server
+
+```bash
+$ scp -r build username@server_ip:/home/jake/tutoring/frontend
+```
