@@ -5,6 +5,11 @@ import { RootAPIURL } from "../common/RootAPIURL";
 
 const RegistrationAPIURL = RootAPIURL + 'registrations/';
 
+// https://stackoverflow.com/questions/39254562/csrf-with-django-reactredux-using-axios
+// https://www.techiediaries.com/django-react-forms-csrf-axios/
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
 export default function RegistrationForm() {
   const params = useParams();
   const [firstName, setFirstName] = useState('');
@@ -92,7 +97,7 @@ export default function RegistrationForm() {
           </button>
           {registrationSuccessFlag ? (
             <div className="alert alert-success mt-5">
-              <h4 class="alert-heading">Registration Success!</h4>
+              <h4 className="alert-heading">Registration Success!</h4>
               <p>
                 Thanks for your registration.
                 The tutor will email you before the tutoring.
