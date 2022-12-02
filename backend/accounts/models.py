@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
 from .utils.my_user_manager import MyUserManager
+from .utils.custom_email_field import LowercaseEmailField
 
 
 class CustomUser(AbstractUser):
@@ -24,7 +25,8 @@ class CustomUser(AbstractUser):
     username = None
 
     # email = models.EmailField(_("email address"), blank=True)
-    email = models.EmailField(_("email address"), unique=True)
+    # email = models.EmailField(_("email address"), unique=True)
+    email = LowercaseEmailField(_("email address"), unique=True)
 
     # USERNAME_FIELD = "username"
     USERNAME_FIELD = "email"
