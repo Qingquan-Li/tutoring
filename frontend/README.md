@@ -18,6 +18,13 @@
 - [ ] Display tutors' email
 - [ ] favicon.ico
 - [ ] Home page sort by meeting time
+- [ ] URL parameter with id
+- [ ] Add boolean is_expire function field
+- [ ] Add duration field
+- [ ] admin time HH:MM, not second
+- [ ] 24-hour clock to 12-hour clock (AM/PM)
+- [ ] comment/text tutor
+- [ ] Distinguish title: tutor/professor...
 
 ## Run in the development mode
 

@@ -27,6 +27,8 @@ https://www.helpyourmath.com/images/img/logo1.jpg
 - [ ] Admin time HH:MM instead of HH:MM:ss
 - [ ] Display AM/PM
 - [x] Remove email case sensitive for Admin login.
+- [ ] Hide IP address using nginx
+- [ ] Evaluation for tutors
 
 ## Run locally
 
