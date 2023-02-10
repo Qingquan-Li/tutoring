@@ -34,6 +34,9 @@ $ cd frontend && npm start
 
 ## Build for production
 
+If you have changed the RootAPIURL in the `frontend/src/common/RootAPIURL.js` file,
+before pushing the code, change the Local RootAPIURL to Production RootAPIURL.
+
 ```bash
 $ npm run build
 ```

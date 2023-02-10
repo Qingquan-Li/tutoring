@@ -30,18 +30,40 @@ class MeetingListSerializer(serializers.ModelSerializer):
         a dict of publisher's fields.
         """
         rep = super(MeetingListSerializer, self).to_representation(instance)
-        rep['publisher'] = {
-            'name':
-            instance.publisher.first_name + ' ' + instance.publisher.last_name,
-            'avatar_url':
+
+        """
+        -> Fix Bug: If user did not add profile on Admin->Users->Add user page, then error:
+        File "/home/jake/tutoring/backend/api/v1/tutoring_info/serializers.py", line 37, in to_representation
             instance.publisher.profile.avatar_url,
-            'institution':
-            instance.publisher.profile.institution.name,
-            'department':
-            instance.publisher.profile.department.name,
-            # 'introduction':
-            # instance.publisher.profile.introduction,
-        }
+        File "/home/jake/tutoring/backend/.venv/lib/python3.8/site-packages/django/db/models/fields/related_descriptors.py", line 461, in __get__
+            raise self.RelatedObjectDoesNotExist(
+        accounts.models.CustomUser.profile.RelatedObjectDoesNotExist: CustomUser has no profile.
+        -> How to fix:
+        Use `hasattr(self, 'related_object')` to check if a related object exists.
+        Reference: https://docs.djangoproject.com/en/4.1/topics/db/examples/one_to_one/
+        """
+        if hasattr(instance.publisher, 'profile'):
+            rep['publisher'] = {
+                'name':
+                instance.publisher.first_name + ' ' + instance.publisher.last_name,
+                'avatar_url':
+                instance.publisher.profile.avatar_url,
+                'institution':
+                instance.publisher.profile.institution.name,
+                'department':
+                instance.publisher.profile.department.name,
+                # 'introduction':
+                # instance.publisher.profile.introduction,
+            }
+        else:
+            rep['publisher'] = {
+                'name':
+                instance.publisher.first_name + ' ' + instance.publisher.last_name,
+                'avatar_url': None,
+                'institution': None,
+                'department': None,
+                # 'introduction': None,
+            }
         # This way can not handle the timezone issue:
         # rep['meeting_time'] = instance.meeting_time.strftime(
         #     "%Y-%m-%d %H:%M:%S")
@@ -63,19 +85,31 @@ class MeetingDetailSerializer(serializers.ModelSerializer):
         a dict of publisher's fields.
         """
         rep = super(MeetingDetailSerializer, self).to_representation(instance)
-        rep['publisher'] = {
+        if hasattr(instance.publisher, 'profile'):
+            rep['publisher'] = {
+                'name':
+                instance.publisher.first_name + ' ' + instance.publisher.last_name,
+                # 'email':
+                # instance.publisher.email,
+                'avatar_url':
+                instance.publisher.profile.avatar_url,
+                'institution':
+                instance.publisher.profile.institution.name,
+                'department':
+                instance.publisher.profile.department.name,
+                'introduction':
+                instance.publisher.profile.introduction,
+            }
+        else:
+            rep['publisher'] = {
             'name':
             instance.publisher.first_name + ' ' + instance.publisher.last_name,
             # 'email':
             # instance.publisher.email,
-            'avatar_url':
-            instance.publisher.profile.avatar_url,
-            'institution':
-            instance.publisher.profile.institution.name,
-            'department':
-            instance.publisher.profile.department.name,
-            'introduction':
-            instance.publisher.profile.introduction,
+            'avatar_url': None,
+            'institution': None,
+            'department': None,
+            'introduction': None,
         }
         return rep
 

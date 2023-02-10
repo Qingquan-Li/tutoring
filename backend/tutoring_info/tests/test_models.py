@@ -23,8 +23,8 @@ class MeetingModelTest(TestCase):
             # modified_time,
             # version,
             # is_active,
-            # publisher=User.objects.get(email='bob@email.com'),
-            publisher=User.objects.get(pk=1),
+            # publisher=User.objects.get(pk=1),
+            publisher=User.objects.get(email='bob@email.com'),
             subject='Subject of Meeting 1',
             summary='The summary of the first meeting.',
             way_of_meeting='online and in-person',
@@ -98,7 +98,8 @@ class RegistrationModelTest(TestCase):
 
         cls.registration = Registration.objects.create(
             # id,
-            meeting=Meeting.objects.get(pk=1),
+            # meeting=Meeting.objects.get(pk=1),
+            meeting=Meeting.objects.get(subject='Subject of Meeting 1'),
             first_name='John',
             last_name='Joe',
             email='johnjoe@email.com',

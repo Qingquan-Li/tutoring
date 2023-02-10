@@ -1,18 +1,20 @@
-# Before deploying new code to Server
+# PART ONE - Before deploying new code to Server
+
+## 1. Changing to the backend directory and activating the virtual environment
 
 ```bash
 $ cd ~/tutoring/backend && source .venv/bin/activate
 ```
 
-## 1. Deployment checklist
+## 2. Deployment checklist
 > References:
 > https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 ```bash
-$ python manage.py check --deploy [--settings=...]
+(.venv) $ python manage.py check --deploy [--settings=...]
 ```
 
-## 2. Managing static files
+## 3. Managing static files
 > References:
 > https://docs.djangoproject.com/en/3.2/howto/static-files/#deployment
 
@@ -20,10 +22,10 @@ If you hava added/changed static files (e.g. images, JavaScript, CSS),
 you should run the `collectstatic` management command:
 
 ```bash
-$ python manage.py collectstatic --settings=a_project_config.settings.local
+(.venv) $ python manage.py collectstatic --settings=a_project_config.settings.local
 ```
 
-## 3. Migrations
+## 4. Migrations
 > References:
 > https://docs.djangoproject.com/en/3.2/topics/migrations/
 
@@ -32,37 +34,44 @@ you should run the command:
 
 ```bash
 # Creating new migrations based on models:
-$ python manage.py makemigrations [app_name] --settings=a_project_config.settings.local
+(.venv) $ python manage.py makemigrations [app_name] --settings=a_project_config.settings.local
 
 # Applying migrations to database:
-$ python manage.py migrate --settings=a_project_config.settings.local
+(.venv) $ python manage.py migrate --settings=a_project_config.settings.local
 ```
 
-## 4. Managing package dependencies
+## 5. Managing package dependencies
 
 If you hava added new package dependencies, you should run the command
 to record an environment's current package list into requirements.txt:
 
 ```bash
-$ pip freeze > requirements.txt
+(.venv) $ pip freeze > requirements.txt
 ```
 
-## 5. Running the test code
+## 6. Running the test code
 ```bash
-$ python manage.py test --settings=a_project_config.settings.local
+(.venv) $ python manage.py test --settings=a_project_config.settings.local
 ```
 
-## 6. Pushing new code to GitHub
+## 7. Pushing new code to GitHub
 > References:
 > https://github.com/git-guides/git-push
 
+If you have changed the RootAPIURL in the `frontend/src/common/RootAPIURL.js` file,
+before pushing the code, change the Local RootAPIURL to Production RootAPIURL.
+
 ```bash
-$ git add .
-$ git commit -m "descriptive message"
-$ git push
+$ cd /path/to/tutoring # Not in the backend directory
+(feature-branch) $ git add .
+(feature-branch) $ git commit -m "descriptive message"
+
+(feature-branch) $ git checkout dev
+(dev) $ git merge feature-branch
+(dev) $ git push
 ```
 
-Create pull request and merge code if needed.
+Create a pull request on GitHub, and merge dev branch to main branch.
 
 <br>
 
@@ -70,9 +79,9 @@ Create pull request and merge code if needed.
 
 <br>
 
-# Deploying new code to Server
+# PART TWO - Deploying new code to Server
 
-## 1. Entering the project path and activating the virtual environment
+## 1. Changing to the backend directory and activating the virtual environment
 ```bash
 $ cd ~/tutoring/backend && source .venv/bin/activate
 ```
@@ -92,6 +101,7 @@ $ python3 -m venv .venv
 $ git pull # or: git fetch + git merge
 ```
 
+First time fetching code from GitHub:
 ```bash
 $ git clone git@github.com:Qingquan-Li/tutoring.git
 ```
