@@ -98,11 +98,25 @@ WSGI_APPLICATION = 'a_project_config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tutoring',
+        'USER': 'tutoring',
+        'PASSWORD': os.getenv('PRODUCTION_POSTGRESQL_PASSWORD'),
+        # https://docs.djangoproject.com/en/4.1/ref/settings/#host
+        # default (empty HOST), the connection to the database is done through UNIX domain sockets.
+        # If you want to connect through TCP sockets, set HOST to ‘localhost’ or ‘127.0.0.1’.
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
 }
 
 

@@ -1,6 +1,18 @@
 # Tutoring
 
-## Before deploying
+## Tech Stack
 
-Befor pushing the code, in `RootAPIURL.js` file,
-change Development URL to Production URL.
+- Server system
+  - Linux (Ubuntu)
+- Database
+  - PostgreSQL
+- Backend:
+  - Programming language: Python
+  - Web framework: Django
+  - API framework: Django REST framework
+  - WSGI server: Gunicorn
+  - Reverse proxy: Nginx
+- Frontend:
+  - React.js
+  - CSS: Bootstrap
+  - Deploy: Nginx, Cloudflare Pages
