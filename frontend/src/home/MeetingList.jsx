@@ -21,7 +21,6 @@ export default function MeetingList() {
       .get('meetings/')
       .then((response) => {
         setMeetings(response.data);
-        // console.log(response);
       })
       .catch((error) => {
         console.log(error);
