@@ -7,6 +7,9 @@ $ python manage.py createsuperuser --settings=a_project_config.settings.producti
 
 Running tests:
 $ python manage.py test --settings=a_project_config.settings.production
+
+Using the shell:
+$ python manage.py shell --settings=a_project_config.settings.production
 """
 
 
@@ -193,13 +196,17 @@ REST_FRAMEWORK = {
     },
 }
 
+# Cross-Origin Resource Sharing (CORS)
 # https://github.com/adamchainz/django-cors-headers
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://192.168.0.118:3000',
-    #'https://tutoring.helpyourmath.com',
-    #'http://tutoring.helpyourmath.com',
-    'https://tutoring.pages.dev',
+    #'https://tutoring.helpyourmath.com', # same origin
+    #'http://tutoring.helpyourmath.com', # same origin
+    # 'https://tutoring.pages.dev',
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://[\w-]+\.tutoring\.pages\.dev$",
 ]
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#secure-proxy-ssl-header
