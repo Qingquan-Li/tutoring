@@ -15,8 +15,8 @@ $ python manage.py shell --settings=a_project_config.settings.development
 
 from .production import *  # noqa
 
-# DEBUG = False  # Unable to load static files automatically
-DEBUG = True
+DEBUG = False  # Unable to load static files automatically
+# DEBUG = True
 
 # Config the firewall rule on Ubuntu server:
 # `$ sudo ufw allow from your_local_ip to any port 8000`
@@ -24,7 +24,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     os.getenv('SERVER_IP'),
     'localhost',
-    'tutoring-dev.helpyourmath.com',
+    'tutoring-development.helpyourmath.com',
 ]
 
 

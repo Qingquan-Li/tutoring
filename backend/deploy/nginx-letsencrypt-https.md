@@ -1,4 +1,4 @@
-You can also use Cloudflare's Flexible SSL, which is free and easy:
+You can also use Cloudflare's Flexible SSL, which is free and simple:
 https://www.cloudflare.com/ssl/
 
 > Cloudflare allows any Internet property to become HTTPS-enabled with the click of a button. You’ll never need to worry about SSL certificates expiring or staying up to date with the latest SSL vulnerabilities when you’re using Cloudflare SSL.
