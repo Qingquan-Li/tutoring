@@ -203,7 +203,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://192.168.0.118:3000',
     #'https://tutoring.helpyourmath.com', # same origin
     #'http://tutoring.helpyourmath.com', # same origin
-    # 'https://tutoring.pages.dev',
+    'https://tutoring.pages.dev',
 ]
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://[\w-]+\.tutoring\.pages\.dev$",
