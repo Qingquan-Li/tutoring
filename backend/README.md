@@ -8,7 +8,7 @@
 - [x] Change feedback to contact_us
 - [x] Cancel pagination for meetings api
 - [x] Change SQLite to PostgreSQL
-- [ ] Auto renew letsencrypt
+- [x] Auto renew letsencrypt
 - [ ] BMCC CUNYfirst_ID, null=False
 - [ ] Zoom link on Admin
 - [ ] Registration number limit, waitlist

@@ -16,6 +16,7 @@
 - [ ] 24-hour clock to 12-hour clock (AM/PM)
 - [ ] Distinguish title: tutor/professor...
 - [ ] Navigate to a new page to notify "Registration successful" after registering the form
+- [ ] Create testing code for React
 
 ## Run in the development mode
 
@@ -33,11 +34,21 @@ before pushing the code, change the Local RootAPIURL to Production RootAPIURL.
 If you have changed the RootAPIURL in the `frontend/src/common/RootAPIURL.js` file,
 before pushing the code, change the Local RootAPIURL to Production RootAPIURL.
 
+### Build locally
 ```bash
 $ npm run build
 ```
 
-## SCP build folder to the server
+### Build with GitHub Actions
+
+1. Automatically build the react app with GitHub Actions
+2. Download the `build` folder from GitHub Actions
+3. Preview the `build` locally
+   ```bash
+   $ serve -s /path/to/build
+   ```
+
+## SCP the build folder to the server
 
 ```bash
 $ scp -r build username@server_ip:/home/jake/tutoring/frontend

@@ -27,6 +27,9 @@ ALLOWED_HOSTS = [
     'tutoring-development.helpyourmath.com',
 ]
 
+# https://docs.djangoproject.com/en/4.1/ref/settings/#wsgi-application
+WSGI_APPLICATION = 'a_project_config.wsgi_development.application'
+
 
 DATABASES = {
     'default': {
