@@ -163,5 +163,6 @@ you should run the command:
 
 ```bash
 $ sudo systemctl restart gunicorn-for-tutoring
+$ sudo systemctl restart gunicorn-for-tutoring-development
 $ sudo systemctl restart nginx
 ```
