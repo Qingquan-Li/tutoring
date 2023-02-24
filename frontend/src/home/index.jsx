@@ -8,7 +8,7 @@ const AdsByGoogle = () => {
       <div>
           <ins class="adsbygoogle"
               style={{display:'block'}}
-              data-ad-client="ca-pub-2226955251055997"
+              data-ad-client="ca-pub-5622524728195625"
               data-ad-slot="7048770259"
               data-ad-format="auto"
               data-full-width-responsive="true">
