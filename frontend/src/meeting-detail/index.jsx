@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import RegistrationForm from "./RegistrationForm";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./index.css";
@@ -25,6 +25,12 @@ export default function MeetingDetail() {
         setError(error);
       });
   }, [params.meetingId]);
+
+  const isDisabled = useMemo(()=>{
+    const now = new Date();
+    let result = new Date(meeting.meeting_time) < now;
+    return result;
+  },[meeting])
 
   if (error) {
     return (
@@ -72,7 +78,7 @@ export default function MeetingDetail() {
             Meeting time: {meeting.meeting_time}
           </p>
           <br />
-          <RegistrationForm />
+          <RegistrationForm isDisabled={isDisabled}/>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const RegistrationAPIURL = RootAPIURL + 'registrations/';
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "csrftoken";
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ isDisabled = false }) {
   const params = useParams();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -46,8 +46,11 @@ export default function RegistrationForm() {
       setError(`An error has occurred: ${error.message}`);
     });
   }
-
   return (
+    isDisabled?
+    <div>
+      Meeting Expired
+    </div>:
     <div className="card border-secondary">
       <div className="card-header">
         Register Now
@@ -112,5 +115,6 @@ export default function RegistrationForm() {
         </form>
       </div>
     </div>
+
   );
 }
