@@ -79,6 +79,18 @@ Created symlink /etc/systemd/system/sockets.target.wants/gunicorn-for-tutoring.s
 
 We can confirm that the operation was successful by checking for the socket file.
 
+Note:
+- To stop the systemd service.
+  Reference: https://superuser.com/questions/513159/how-to-remove-systemd-services
+    ```bash
+    $ systemctl stop gunicorn-for-tutoring
+  
+    $ sudo systemctl status gunicorn-for-tutoring
+    Unit gunicorn-for-tutoring.service could not be found.
+  
+    $ systemctl daemon-reload
+    $ systemctl reset-failed
+    ```
 
 # 3. Checking for the Gunicorn Socket File
 
@@ -89,15 +101,29 @@ $ sudo systemctl status gunicorn-for-tutoring.socket
      ...
 ```
 
+Notes:
+- If something goes wrong, Check the Gunicorn socket’s logs by typing:
+    ```bash
+    $ sudo journalctl -u gunicorn-for-tutoring.socket
+    ```
+- If it returns something like `Feb 14 06:11:18 ubuntu systemd[1]: gunicorn-for-tutoring.socket: Socket unit configuration has changed while unit has been running, no open socket file descriptor left. The socket unit is not functional until restarted.`
+    ```bash
+    # Stop the gunicorn-for-tutoring.socket unit:
+    $ sudo systemctl stop gunicorn-for-tutoring.socket
+    # Reload the systemd configuration to ensure that the changes are applied:
+    $ sudo systemctl daemon-reload
+    # Start the gunicorn-for-tutoring.socket unit again:
+    $ sudo systemctl start gunicorn.socket
+    ```
+- If it returns `Loaded: loaded (/etc/systemd/system/gunicorn-for-tutoring.service; disabled; vendor preset: enabled)  Active: failed (Result: exit-code)`, run:
+    ```bash
+    $ sudo systemctl start gunicorn-for-tutoring
+    ```
+
 Next, check for the existence of the gunicorn-for-tutoring.sock file within the /run directory:
 ```bash
 $ file /run/gunicorn-for-tutoring.sock
 /run/gunicorn-for-tutoring.sock: socket
-```
-
-If something goes wrong, Check the Gunicorn socket’s logs by typing:
-```bash
-$ sudo journalctl -u gunicorn-for-tutoring.socket
 ```
 
 Check gunicorn--for-tutoring process:

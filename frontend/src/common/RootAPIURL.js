@@ -5,7 +5,7 @@
 
 // TODO:
 // Development (the data comes from the development database on the server):
-// export const RootAPIURL = 'https://tutoring-dev.helpyourmath.com/api/v1/';
+// export const RootAPIURL = 'https://tutoring-development.helpyourmath.com/api/v1/';
 
 // Production (the data comes from the production database on the server):
 export const RootAPIURL = 'https://tutoring.helpyourmath.com/api/v1/';

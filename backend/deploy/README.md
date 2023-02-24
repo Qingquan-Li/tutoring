@@ -81,7 +81,16 @@ Create a pull request on GitHub, and merge dev branch to main branch.
 
 # PART TWO - Deploying new code to Server
 
-## 1. Changing to the backend directory and activating the virtual environment
+## 1. Pulling new code from GitHub
+> References:
+> https://github.com/git-guides/git-pull
+
+```bash
+$ cd ~/tutoring
+$ git pull # or: git fetch + git merge
+```
+
+## 2. Changing to the backend directory and activating the virtual environment
 ```bash
 $ cd ~/tutoring/backend && source .venv/bin/activate
 ```
@@ -91,14 +100,6 @@ create a virtual environment first:
 ```bash
 $ cd ~/tutoring/backend
 $ python3 -m venv .venv
-```
-
-## 2. Pulling new code from GitHub
-> References:
-> https://github.com/git-guides/git-pull
-
-```bash
-$ git pull # or: git fetch + git merge
 ```
 
 First time fetching code from GitHub:
@@ -162,5 +163,6 @@ you should run the command:
 
 ```bash
 $ sudo systemctl restart gunicorn-for-tutoring
+$ sudo systemctl restart gunicorn-for-tutoring-development
 $ sudo systemctl restart nginx
 ```

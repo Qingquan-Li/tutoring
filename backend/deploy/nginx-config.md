@@ -34,6 +34,7 @@ server {
     }
 
 }
+```
 
 Handle React.js (frontend) and Django (backend) with letsencrypt:
 
@@ -103,6 +104,8 @@ server {
 
 }
 ```
+
+---
 
 Now, we can enable the file by linking it to the sites-enabled directory:
 ```bash

@@ -2,34 +2,26 @@
 
 ## To-do
 
-- [x] Testing
-- [x] favicon.ico
-https://www.helpyourmath.com/images/img/logo1.jpg
-- [x] On RegistrationAdmin, add filter on the right side.
-- [x] On tutor end's, show number of registrations.
-- [ ] Deploy on cloud sever.
 - [ ] VIEW ON SITE on admin page.
-- [x] API
-- [ ] API test code
+- [ ] API testing code
 - [ ] Add website_alert, display info on the top of the website
 - [x] Change feedback to contact_us
-- [x] Add `verbose_name='Detail (tell more about this meeting)'` to `summary` field
-- [x] Add field `introduction` field, `verbose_name='Introduce yourself (optional)'` to profile
 - [x] Cancel pagination for meetings api
-- [ ] Change SQLite to PostgreSQL
-- [ ] Auto renew letsencrypt
+- [x] Change SQLite to PostgreSQL
+- [x] Auto renew letsencrypt
 - [ ] BMCC CUNYfirst_ID, null=False
 - [ ] Zoom link on Admin
 - [ ] Registration number limit, waitlist
 - [ ] User can change password, profile
 - [ ] Add is_expire function as a field
-- [ ] Add duration field
+- [ ] Add duration field (meeting_start_time, meeting_end_time)
 - [ ] Admin time HH:MM instead of HH:MM:ss
 - [ ] Display AM/PM
 - [x] Remove email case sensitive for Admin login.
 - [ ] Hide IP address using nginx
 - [ ] Evaluation for tutors
-- [ ] Move the deploy folder to the root directory
+- [ ] On Admin - Meeting list page, display is_active icon
+- [ ] On Admin - Meeting detail page, highlight is_active option
 
 ## Run locally
 

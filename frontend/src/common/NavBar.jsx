@@ -21,7 +21,7 @@ export default function NavBar() {
             <div className="navbar-nav ms-auto">
               <a className="nav-link" href="/contact/">Contact Us</a>
               {/* TODO */}
-              <a className="nav-link" href="/admin/">Admin</a>
+              <a className="nav-link" href="/admin/">Tutor Login</a>
             </div>
           </div>
         </div>

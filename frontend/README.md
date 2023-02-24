@@ -2,29 +2,21 @@
 
 ## Todo:
 
-- [x] Configure React environment
-- [ ] React Router
-- [x] Bootstrap
-- [ ] Deploy front-end project
-    - https://create-react-app.dev/docs/deployment/
-    - https://pages.cloudflare.com/
-    - https://www.digitalocean.com/community/tutorials/how-to-deploy-a-react-application-with-nginx-on-ubuntu-20-04
-- [ ] Meeting list page
-- [ ] Meeting detail and registration page
 - [ ] Check my registration through email address
 - [ ] Search tutoring session (via `subject` field)
 - [ ] Filter sessions by `date`, `way` fiedds
-- [ ] Can not register if `!is_active || meeting_time < (current_time + 2hours)`
+- [ ] On meeting detail page, if `!is_active` then 404;
+- [ ] if `meeting_time < current_time` then Can not register (disable the form)
 - [ ] Display tutors' email
-- [ ] favicon.ico
+- [ ] Add favicon.ico
 - [ ] Home page sort by meeting time
-- [ ] URL parameter with id
 - [ ] Add boolean is_expire function field
-- [ ] Add duration field
+- [ ] Add duration field (meeting_start_time, meeting_end_time)
 - [ ] admin time HH:MM, not second
 - [ ] 24-hour clock to 12-hour clock (AM/PM)
-- [ ] comment/text tutor
 - [ ] Distinguish title: tutor/professor...
+- [ ] Navigate to a new page to notify "Registration successful" after registering the form
+- [ ] Create testing code for React
 
 ## Run in the development mode
 
@@ -32,16 +24,31 @@
 $ cd frontend && npm start
 ```
 
+## Before pushing the code to GitHub (creating pull requests)
+
+If you have changed the RootAPIURL in the `frontend/src/common/RootAPIURL.js` file,
+before pushing the code, change the Local RootAPIURL to Production RootAPIURL.
+
 ## Build for production
 
 If you have changed the RootAPIURL in the `frontend/src/common/RootAPIURL.js` file,
 before pushing the code, change the Local RootAPIURL to Production RootAPIURL.
 
+### Build locally
 ```bash
 $ npm run build
 ```
 
-## SCP build folder to the server
+### Build with GitHub Actions
+
+1. Automatically build the react app with GitHub Actions
+2. Download the `build` folder from GitHub Actions
+3. Preview the `build` locally
+   ```bash
+   $ serve -s /path/to/build
+   ```
+
+## SCP the build folder to the server
 
 ```bash
 $ scp -r build username@server_ip:/home/jake/tutoring/frontend
