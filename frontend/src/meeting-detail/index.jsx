@@ -18,7 +18,6 @@ export default function MeetingDetail() {
       .get(baseURL + `meetings/${params.meetingId}/`)
       .then((response) => {
         setMeeting(response.data);
-        // console.log(response);
       })
       .catch((error) => {
         console.log(error);
