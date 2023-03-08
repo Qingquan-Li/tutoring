@@ -103,8 +103,8 @@ class RegistrationModelTest(TestCase):
             first_name='John',
             last_name='Joe',
             email='johnjoe@email.com',
-            # cunyfirst_id='24263901',
-            cunyfirst_id=None,
+            cunyfirst_id='24263901',
+            # cunyfirst_id=None,
         )
 
     def test_meeting(self) -> None:
@@ -124,9 +124,9 @@ class RegistrationModelTest(TestCase):
         self.assertEqual(expected_content, 'johnjoe@email.com')
 
     def test_cunyfirst_id(self) -> None:
-        # expected_content = f'{self.registration.cunyfirst_id}'
-        # self.assertEqual(expected_content, '24263901')
-        assert self.registration.cunyfirst_id is None
+        expected_content = f'{self.registration.cunyfirst_id}'
+        self.assertEqual(expected_content, '24263901')
+        # assert self.registration.cunyfirst_id is None
 
 
 """

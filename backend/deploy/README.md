@@ -146,11 +146,14 @@ you should run the command:
 
 ```bash
 (.venv) $ python manage.py migrate --settings=a_project_config.settings.production
+(.venv) $ python manage.py migrate --settings=a_project_config.settings.development
 ```
 
 ## 6. Running the test code
 ```bash
 (.venv) $ python manage.py test --settings=a_project_config.settings.production
+(.venv) $ python manage.py test --settings=a_project_config.settings.development
+
 # If 'permission denied  to create database', run:
 # $ sudo -u postgres psql
 # postgres=# \du  \\ -- to list all users
