@@ -15,4 +15,7 @@
 - Frontend:
   - React.js
   - CSS: Bootstrap
-  - Deploy: Nginx, Cloudflare Pages
+  - Build React App: GitHub Actions
+  - Deploy:
+    - Prodution: Nginx + Linux (Ubuntu)
+    - Testing (preview): Cloudflare Pages
