@@ -14,9 +14,9 @@ class AnnouncementModelTest(TestCase):
 
         User = get_user_model()
         cls.user_a = User.objects.create(email='alice@email.com',
-                                  password='testpass123')
+                                         password='testpass123')
         cls.user_b = User.objects.create(email='bob@email.com',
-                                  password='testpass123')
+                                         password='testpass123')
 
         cls.announcement = Announcement.objects.create(
             # id,
@@ -24,9 +24,8 @@ class AnnouncementModelTest(TestCase):
             # modified_time,
             # version,
             # is_active,
-            created_by = User.objects.get(id=1),
-            # created_by = User.objects.get(email='bob@email.com'),
-            # modified_by = User.objects.get(email='alice@email.com'),
+            created_by = User.objects.get(email='alice@email.com'),
+            modified_by = User.objects.get(email='alice@email.com'),
             content="Original content.",
             start_time=timezone.make_aware(
                 datetime.datetime(2023, 3, 7, 0, 0, 0, 0),
