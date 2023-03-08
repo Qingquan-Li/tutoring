@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'tutoring_info.apps.TutoringInfoConfig',
     'contact_us.apps.ContactUsConfig',
+    'announcement.apps.AnnouncementConfig',
 ]
 
 MIDDLEWARE = [

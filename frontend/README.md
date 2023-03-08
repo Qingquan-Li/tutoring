@@ -2,18 +2,13 @@
 
 ## Todo:
 
-- [ ] Check my registration through email address
 - [ ] Search tutoring session (via `subject` field)
 - [ ] Filter sessions by `date`, `way` fiedds
 - [ ] On meeting detail page, if `!is_active` then 404;
-- [ ] if `meeting_time < current_time` then Can not register (disable the form)
 - [ ] Display tutors' email
 - [ ] Add favicon.ico
-- [ ] Home page sort by meeting time
-- [ ] Add boolean is_expire function field
 - [ ] Add duration field (meeting_start_time, meeting_end_time)
 - [ ] admin time HH:MM, not second
-- [ ] 24-hour clock to 12-hour clock (AM/PM)
 - [ ] Distinguish title: tutor/professor...
 - [ ] Navigate to a new page to notify "Registration successful" after registering the form
 - [ ] Create testing code for React
