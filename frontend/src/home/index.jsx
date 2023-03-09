@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div className="container home-container">
         <AdsByGoogle />
-        <Announcement />
         <Illustration />
+        <Announcement />
         <MeetingList />
     </div>
   );
