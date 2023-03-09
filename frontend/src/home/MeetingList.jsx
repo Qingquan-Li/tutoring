@@ -61,7 +61,7 @@ export default function MeetingList() {
                 Meet: {meeting.way_of_meeting}
               </div>
               <div className='meeting-time'>
-                Meeting time: {date.toLocaleString()}
+                Meeting time: {date.toLocaleString().slice(0,-6)+date.toLocaleString().slice(-2)}
               </div>
               {/* <a href="#" className="btn btn-outline-primary mt-3">
                 View details
