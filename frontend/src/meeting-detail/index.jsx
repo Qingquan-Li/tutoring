@@ -74,7 +74,20 @@ export default function MeetingDetail() {
             Meet: {meeting.way_of_meeting}
             <br />
             <i className="bi bi-clock"></i>{' '}
-            Meeting time: {meeting.meeting_time}
+            Meeting time: {
+              // If meeting.meeting_time is not null, then format it
+              // using the Intl.DateTimeFormat object.
+              meeting.meeting_time
+              ? new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "numeric",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: true,
+                }).format(new Date(meeting.meeting_time))
+              : null
+            }
           </p>
           <br />
           <RegistrationForm isDisabled={isDisabled}/>
