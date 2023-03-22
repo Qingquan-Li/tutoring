@@ -33,6 +33,17 @@ export default function MeetingList() {
     const list = meetings.sort((a,b)=>new Date(a.meeting_time)-new Date(b.meeting_time))
     .map((meeting) => {
       let date = new Date(meeting.meeting_time);
+      // Format date with `Intl.DateTimeFormat`
+      let formattedDate = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        // second: "numeric",
+        hour12: true,
+        // timeZone: "America/New_York",
+      }).format(date);
       if (meeting.is_active && date > now) {
         return (
           <div
@@ -61,7 +72,8 @@ export default function MeetingList() {
                 Meet: {meeting.way_of_meeting}
               </div>
               <div className='meeting-time'>
-                Meeting time: {date.toLocaleString()}
+                {/* Meeting time: {date.toLocaleString().slice(0,-6)+date.toLocaleString().slice(-2)} */}
+                Meeting time: {formattedDate}
               </div>
               {/* <a href="#" className="btn btn-outline-primary mt-3">
                 View details
