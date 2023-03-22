@@ -87,7 +87,7 @@ export default function RegistrationForm({ isDisabled = false }) {
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">CUNYfirst ID (optional)</label>
+            <label className="form-label">CUNYfirst ID*</label>
             <input
               type="text"
               className="form-control"
