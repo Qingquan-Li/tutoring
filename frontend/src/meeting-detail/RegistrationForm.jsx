@@ -25,6 +25,15 @@ export default function RegistrationForm({ isDisabled = false }) {
     return result
   },[CUNYfirstID])
   
+  const isEmailInvalid = useMemo(()=>{
+    if(emailAddress === ''){
+      return true;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const result = !emailRegex.test(emailAddress);
+    return result
+  },[emailAddress])
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsShowValidated(true);
@@ -89,7 +98,7 @@ export default function RegistrationForm({ isDisabled = false }) {
               value={emailAddress}
               onChange={(e) => setEmailAddress(e.target.value)}
             />
-            {isShowValidated && emailAddress === '' ? <div className="invalid">Email can not be empty.</div>:''}
+            {isShowValidated && isEmailInvalid ? <div className="invalid">Email address is invalid.</div>:''}
           </div>
           <div className="mb-3">
             <label className="form-label">CUNYfirst ID*</label>
