@@ -20,9 +20,11 @@ export default function RegistrationForm({ isDisabled = false }) {
   const [error, setError] = useState(null);
   const [isShowValidated, setIsShowValidated] = useState(false);
   const isIdInvalid = useMemo(()=>{
-    const checkId = ![...CUNYfirstID].map(item => (item.charCodeAt() > 57 || item.charCodeAt() < 48)).some(item=>item);
-    return checkId
+    const checkId = [...CUNYfirstID].map(item => (item.charCodeAt() > 57 || item.charCodeAt() < 48)).some(item=>item);
+    const result = (checkId || CUNYfirstID.length !== 8);
+    return result
   },[CUNYfirstID])
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsShowValidated(true);
@@ -43,7 +45,7 @@ export default function RegistrationForm({ isDisabled = false }) {
     })
     .catch((error) => {
       console.log(error);
-      // setError(`An error has occurred: ${error.message}`);
+      setError(`An error has occurred: ${error.message}`);
     });
   }
   return (
@@ -97,7 +99,7 @@ export default function RegistrationForm({ isDisabled = false }) {
               value={CUNYfirstID}
               onChange={(e) => setCUNYfirstID(e.target.value)}
             />
-            {isShowValidated && CUNYfirstID.length !== 8 && isIdInvalid ?<div className="invalid">CUNYfirst ID should be 8 digit numbers.</div>:''}
+            {isShowValidated && isIdInvalid ?<div className="invalid">CUNYfirst ID should be 8 digit numbers.</div>:''}
           </div>
           <button type="submit" className="btn btn-primary mt-3">
             Submit Registration
