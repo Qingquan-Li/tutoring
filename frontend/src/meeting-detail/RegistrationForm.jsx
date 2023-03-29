@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { RootAPIURL } from "../common/RootAPIURL";
 
 const RegistrationAPIURL = RootAPIURL + 'registrations/';
@@ -16,14 +16,27 @@ export default function RegistrationForm({ isDisabled = false }) {
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [CUNYfirstID, setCUNYfirstID] = useState('');
-  // const [RegistrationInfo, setResitrationInfo] = useState({});
   const [registrationSuccessFlag, setRegistrationSuccessFlag] = useState(false);
   const [error, setError] = useState(null);
-
+  const [isShowValidated, setIsShowValidated] = useState(false);
+  const isIdInvalid = useMemo(()=>{
+    const checkId = [...CUNYfirstID].map(item => (item.charCodeAt() > 57 || item.charCodeAt() < 48)).some(item=>item);
+    const result = (checkId || CUNYfirstID.length !== 8);
+    return result
+  },[CUNYfirstID])
+  
+  const isEmailInvalid = useMemo(()=>{
+    if(emailAddress === ''){
+      return true;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const result = !emailRegex.test(emailAddress);
+    return result
+  },[emailAddress])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIsShowValidated(true);
     axios.post(RegistrationAPIURL, {
       meeting: params.meetingId,
       first_name: firstName,
@@ -32,8 +45,6 @@ export default function RegistrationForm({ isDisabled = false }) {
       cunyfirst_id: CUNYfirstID,
     })
     .then((response) => {
-      console.log(response.data.data);
-      // setResitrationInfo(response.data.data);
       setRegistrationSuccessFlag(true);
       setFirstName('');
       setLastName('');
@@ -67,6 +78,7 @@ export default function RegistrationForm({ isDisabled = false }) {
               // that triggered the event.
               onChange={(e) => setFirstName(e.target.value)}
             />
+            {isShowValidated && firstName === '' ? <div className="invalid">First name can not be empty.</div>:''}
           </div>
           <div className="mb-3">
             <label className="form-label">Last name*</label>
@@ -76,6 +88,7 @@ export default function RegistrationForm({ isDisabled = false }) {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
+            {isShowValidated && lastName === '' ? <div className="invalid">Last name can not be empty.</div>:''}
           </div>
           <div className="mb-3">
             <label className="form-label">Email address*</label>
@@ -85,6 +98,7 @@ export default function RegistrationForm({ isDisabled = false }) {
               value={emailAddress}
               onChange={(e) => setEmailAddress(e.target.value)}
             />
+            {isShowValidated && isEmailInvalid ? <div className="invalid">Email address is invalid.</div>:''}
           </div>
           <div className="mb-3">
             <label className="form-label">CUNYfirst ID*</label>
@@ -94,6 +108,7 @@ export default function RegistrationForm({ isDisabled = false }) {
               value={CUNYfirstID}
               onChange={(e) => setCUNYfirstID(e.target.value)}
             />
+            {isShowValidated && isIdInvalid ?<div className="invalid">CUNYfirst ID should be 8 digit numbers.</div>:''}
           </div>
           <button type="submit" className="btn btn-primary mt-3">
             Submit Registration

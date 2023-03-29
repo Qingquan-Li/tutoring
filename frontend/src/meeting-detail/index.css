@@ -13,3 +13,9 @@
 .meeting-detail-container .summary {
   font-size: large;
 }
+
+.invalid{
+  color: red;
+  font-style: italic;
+  font-size: 0.7rem;
+}
