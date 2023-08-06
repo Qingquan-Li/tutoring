@@ -1,6 +1,7 @@
 import Illustration from "./Illustration";
 import MeetingList from "./MeetingList";
 import AdsByGoogle from "./AdsByGoogle";
+import Announcement from "./Announcement";
 import "./index.css";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <div className="container home-container">
         <AdsByGoogle />
         <Illustration />
+        <Announcement />
         <MeetingList />
     </div>
   );
