@@ -17,3 +17,6 @@
   font-size: smaller;
   font-weight: 500;
 }
+.card-title-expired {
+  color: red;
+}
