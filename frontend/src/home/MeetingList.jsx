@@ -30,7 +30,10 @@ export default function MeetingList() {
 
   const meetingList = useMemo(()=>{
     const now = new Date();
-    const list = meetings.sort((a,b)=>new Date(a.meeting_time)-new Date(b.meeting_time))
+    const list = [
+      ...meetings.filter(meeting => new Date(meeting.meeting_time) > now).sort((a,b)=>new Date(a.meeting_time)-new Date(b.meeting_time)),
+      ...meetings.filter(meeting => new Date(meeting.meeting_time) < now).sort((a,b)=>new Date(a.meeting_time)-new Date(b.meeting_time)),
+    ]
     .map((meeting) => {
       let date = new Date(meeting.meeting_time);
       // Format date with `Intl.DateTimeFormat`
@@ -44,16 +47,22 @@ export default function MeetingList() {
         hour12: true,
         // timeZone: "America/New_York",
       }).format(date);
-      if (meeting.is_active && date > now) {
+      if (meeting.is_active) {
         return (
           <div
             className='card col-11 col-lg-8 mb-4 meeting-list-card'
             key={meeting.id}
           >
             <div className='card-body'>
-              <h5 className='card-title'>
-                {meeting.subject}
-              </h5>
+              {
+                date > now ? 
+                <h5 className='card-title'>
+                  {meeting.subject}
+                </h5> :
+                <h5 className='card-title-expired'>
+                 {meeting.subject + '(Expired)'}
+                </h5>
+              }
               <div className='py-2'>
                 <img
                   loading='lazy'
